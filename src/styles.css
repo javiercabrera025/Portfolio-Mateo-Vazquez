@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Inter', sans-serif;
+}
+
+body {
+  font-family: var(--font-display);
+}
+
+.about-left h1,
+.about-left h2,
+.about-left h3,
+.about-left h4,
+.about-left h5,
+.about-left h6,
+.about-left p,
+.about-left li,
+.about-left span,
+.about-left a,
+.about-left div,
+.about-left strong,
+.about-left em,
+.about-left b,
+.about-left i,
+.about-left u,
+.about-left small,
+.about-left sub,
+.about-left sup,
+.about-left blockquote {
+  color: #ffffff;
+}
