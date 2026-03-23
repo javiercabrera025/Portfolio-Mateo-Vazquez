@@ -1,25 +1,13 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { Resend } from 'resend';
+import { NextRequest, NextResponse } from 'next/server'
+import { Resend } from 'resend'
 
-// Variable de entorno necesaria en Vercel:
-// RESEND_API_KEY → tu API key de resend.com
+const resend = new Resend(process.env.RESEND_API_KEY)
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-export default async function handler(req: VercelRequest, res: VercelResponse) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
-
-  const { name, email, subject, message } = req.body as {
-    name: string;
-    email: string;
-    subject: string;
-    message: string;
-  };
+export async function POST(req: NextRequest) {
+  const { name, email, subject, message } = await req.json()
 
   if (!name || !email || !subject || !message) {
-    return res.status(400).json({ error: 'Campos requeridos faltantes' });
+    return NextResponse.json({ error: 'Campos requeridos faltantes' }, { status: 400 })
   }
 
   try {
@@ -52,11 +40,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           <p style="line-height: 1.6; white-space: pre-wrap;">${message}</p>
         </div>
       `,
-    });
-
-    return res.status(200).json({ ok: true });
+    })
+    return NextResponse.json({ ok: true })
   } catch (error) {
-    console.error('Error sending email:', error);
-    return res.status(500).json({ error: 'Error al enviar el email' });
+    console.error('Error sending email:', error)
+    return NextResponse.json({ error: 'Error al enviar el email' }, { status: 500 })
   }
 }
