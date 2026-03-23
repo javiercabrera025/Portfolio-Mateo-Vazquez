@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 import { client } from '@/lib/sanityClient'
 
 interface SanityImageAsset {
@@ -77,11 +78,15 @@ export const AllProjects = () => {
       <div className='max-w-7xl mx-auto px-4 md:px-8'>
         <h2 className='text-white text-3xl font-bold mb-8 tracking-tight' style={{ fontFamily: 'var(--font-syne)' }}>Trabajos</h2>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10'>
-          {items.map((p) => {
+          {items.map((p, i) => {
             const imageUrl = p.image?.asset?.url
             return (
-              <article
+              <motion.article
                 key={p._id}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.07, ease: 'easeOut' }}
                 onClick={() => router.push(`/trabajos/${slugFromTitle(p.title)}`)}
                 className='relative cursor-pointer transition-transform duration-300 group'>
                 <div className='relative bg-white p-2 shadow-[0_20px_40px_rgba(0,0,0,0.45)]'>
@@ -102,7 +107,7 @@ export const AllProjects = () => {
                     </div>
                   </div>
                 </div>
-              </article>
+              </motion.article>
             )
           })}
         </div>

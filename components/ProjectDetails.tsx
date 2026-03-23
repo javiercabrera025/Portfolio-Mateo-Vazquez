@@ -229,7 +229,7 @@ export const ProjectDetails = ({ slug }: { slug: string }) => {
         const id = getYouTubeId(value?.url);
         if (!id) return null;
         return (
-          <div className='aspect-video w-full bg-black rounded-lg overflow-hidden mb-[15px]'>
+          <div className='aspect-video w-full bg-black rounded-lg overflow-hidden my-5'>
             <iframe
               className='w-full h-full'
               src={`https://www.youtube.com/embed/${id}`}
@@ -249,7 +249,7 @@ export const ProjectDetails = ({ slug }: { slug: string }) => {
             alt=''
             width={1200}
             height={675}
-            className='w-full rounded-lg mb-[15px]'
+            className='w-full rounded-lg my-5'
           />
         );
       },
@@ -262,7 +262,7 @@ export const ProjectDetails = ({ slug }: { slug: string }) => {
           2: 'grid-cols-1 sm:grid-cols-2'
         };
         const wrapperClass =
-          columns === 1 ? 'flex justify-center mb-[15px]' : 'mb-[15px]';
+          columns === 1 ? 'flex justify-center my-5' : 'my-5';
         const innerClass = columns === 1 ? 'w-full max-w-sm' : 'w-full';
         return (
           <div className={wrapperClass}>
@@ -387,7 +387,7 @@ export const ProjectDetails = ({ slug }: { slug: string }) => {
                     </div>
                   )}
                   <div className='min-w-0'>
-                    <p className='text-xs text-black/35 uppercase tracking-widest mb-1'>← Anterior</p>
+                    <p className='text-xs text-black/35 uppercase tracking-widest mb-1'>Anterior</p>
                     <p className='text-black/80 text-sm font-medium truncate'>{prevProject.title}</p>
                   </div>
                 </Link>
@@ -400,7 +400,7 @@ export const ProjectDetails = ({ slug }: { slug: string }) => {
                   href={`/trabajos/${slugFromTitle(nextProject.title)}`}
                   className='flex items-center justify-end gap-4 py-6 sm:py-8 sm:pl-6'>
                   <div className='min-w-0 text-right'>
-                    <p className='text-xs text-black/35 uppercase tracking-widest mb-1'>Siguiente →</p>
+                    <p className='text-xs text-black/35 uppercase tracking-widest mb-1'>Siguiente</p>
                     <p className='text-black/80 text-sm font-medium truncate'>{nextProject.title}</p>
                   </div>
                   {nextProject.image?.asset?.url && (
