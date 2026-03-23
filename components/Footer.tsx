@@ -85,8 +85,8 @@ export const Footer = () => {
         </div>
 
         <div className='pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0'>
-          <p className='text-xs text-white/40'>© {new Date().getFullYear()} Mateo Vázquez.</p>
-          <p className='text-xs text-white/40'>Montevideo, Uruguay</p>
+          <p className='text-xs text-white/60'>© {new Date().getFullYear()} Mateo Vázquez.</p>
+          <p className='text-xs text-white/60'>Montevideo, Uruguay</p>
         </div>
       </div>
     </footer>

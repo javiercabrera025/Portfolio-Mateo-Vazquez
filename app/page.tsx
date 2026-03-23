@@ -1,5 +1,4 @@
-import { Hero } from '@/components/Hero'
-import { Projects } from '@/components/Projects'
+import { HomeLoader } from '@/components/HomeLoader'
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -24,8 +23,7 @@ export default function HomePage() {
         type='application/ld+json'
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Hero />
-      <Projects />
+      <HomeLoader />
     </>
   )
 }

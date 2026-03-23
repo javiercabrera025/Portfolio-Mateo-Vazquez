@@ -18,7 +18,7 @@ type Settings = {
   }
 }
 
-export const Hero = () => {
+export const Hero = ({ onReady }: { onReady?: () => void }) => {
   const [videoUrl, setVideoUrl] = useState<string | null>(null)
 
   useEffect(() => {
@@ -28,21 +28,23 @@ export const Hero = () => {
         setVideoUrl(data?.coverVideo?.asset?.url ?? null)
       })
       .catch(console.error)
+      .finally(() => onReady?.())
   }, [])
-
-  if (!videoUrl) return null
 
   return (
     <section className='relative w-full h-screen bg-black overflow-hidden'>
-      <video
-        src={videoUrl}
-        className='absolute inset-0 w-full h-full object-cover'
-        autoPlay
-        loop
-        muted
-        playsInline
-        disablePictureInPicture
-      />
+      {videoUrl && (
+        <video
+          src={videoUrl}
+          className='absolute inset-0 w-full h-full object-cover'
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload='none'
+          disablePictureInPicture
+        />
+      )}
     </section>
   )
 }

@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
+import { motion } from 'framer-motion'
 import { client } from '@/lib/sanityClient'
 
 interface SanityImageAsset {
@@ -56,44 +58,56 @@ export const AllProjects = () => {
 
   if (loading) {
     return (
-      <div className='fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-[2px]'>
-        <div className='relative w-14 h-14'>
-          <div className='absolute inset-0 rounded-full border-2 border-white/20' />
-          <div className='absolute inset-0 rounded-full border-2 border-white border-t-transparent animate-spin' />
+      <section className='relative w-full bg-black pt-[calc(72px+5rem)] pb-20'>
+        <div className='max-w-7xl mx-auto px-4 md:px-8'>
+          <div className='h-9 w-36 bg-white/10 rounded mb-8 animate-pulse' />
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10'>
+            {Array.from({ length: 16 }).map((_, i) => (
+              <div key={i} className='bg-white/5 p-2 animate-pulse'>
+                <div className='aspect-video bg-white/10' />
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
     )
   }
 
   return (
     <section className='relative w-full bg-black pt-[calc(72px+5rem)] pb-20'>
       <div className='max-w-7xl mx-auto px-4 md:px-8'>
-        <h2 className='text-white text-3xl font-bold mb-8 tracking-tight'>Trabajos</h2>
+        <h2 className='text-white text-3xl font-bold mb-8 tracking-tight' style={{ fontFamily: 'var(--font-syne)' }}>Trabajos</h2>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10'>
-          {items.map((p) => {
+          {items.map((p, i) => {
             const imageUrl = p.image?.asset?.url
             return (
-              <article
+              <motion.article
                 key={p._id}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.07, ease: 'easeOut' }}
                 onClick={() => router.push(`/trabajos/${slugFromTitle(p.title)}`)}
                 className='relative cursor-pointer transition-transform duration-300 group'>
                 <div className='relative bg-white p-2 shadow-[0_20px_40px_rgba(0,0,0,0.45)]'>
                   <div className='relative overflow-hidden aspect-video'>
                     {imageUrl && (
-                      <img
+                      <Image
                         src={imageUrl}
                         alt={p.title}
-                        className='w-full h-full object-cover transition-transform duration-700 group-hover:scale-110'
+                        fill
+                        sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                        className='object-cover transition-transform duration-700 group-hover:scale-110'
                       />
                     )}
                     <div className='absolute inset-0 bg-black/0 group-hover:bg-black/70 transition-all duration-300 flex items-center justify-center'>
                       <div className='opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 px-4 text-center'>
-                        <h3 className='font-bold text-white text-xl mb-2'>{p.title}</h3>
+                        <h3 className='font-bold text-white text-xl mb-2' style={{ fontFamily: 'var(--font-syne)' }}>{p.title}</h3>
                       </div>
                     </div>
                   </div>
                 </div>
-              </article>
+              </motion.article>
             )
           })}
         </div>
