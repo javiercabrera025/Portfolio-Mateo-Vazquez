@@ -30,19 +30,20 @@ export const Hero = () => {
       .catch(console.error)
   }, [])
 
-  if (!videoUrl) return null
-
   return (
     <section className='relative w-full h-screen bg-black overflow-hidden'>
-      <video
-        src={videoUrl}
-        className='absolute inset-0 w-full h-full object-cover'
-        autoPlay
-        loop
-        muted
-        playsInline
-        disablePictureInPicture
-      />
+      {videoUrl && (
+        <video
+          src={videoUrl}
+          className='absolute inset-0 w-full h-full object-cover'
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload='none'
+          disablePictureInPicture
+        />
+      )}
     </section>
   )
 }

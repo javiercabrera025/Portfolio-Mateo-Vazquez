@@ -75,7 +75,7 @@ export const ContactForm = () => {
     <section className='w-full bg-black pt-[calc(72px+5rem)] pb-20'>
       <div className='max-w-2xl mx-auto px-4 md:px-8'>
         <h2 className='text-white text-3xl font-bold mb-2 tracking-tight'>Contacto</h2>
-        <p className='text-white/50 text-sm mb-10 font-light'>
+        <p className='text-white/60 text-sm mb-10 font-light'>
           Enviame un mensaje y te respondo a la brevedad.
         </p>
 

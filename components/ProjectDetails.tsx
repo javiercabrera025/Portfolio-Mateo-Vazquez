@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { PortableText } from '@portabletext/react'
 import { client } from '@/lib/sanityClient'
 
@@ -197,7 +198,7 @@ export const ProjectDetails = ({ slug }: { slug: string }) => {
       imageBlock: ({ value }: any) => {
         const asset: SanityImageAsset | undefined = value?.asset
         if (!asset?.url) return null
-        return <img src={asset.url} alt='' className='w-full rounded-lg mb-8' />
+        return <Image src={asset.url} alt='' width={1200} height={675} className='w-full rounded-lg mb-8' />
       },
       videoGrid: ({ value }: any) => {
         const items: { url?: string }[] = value?.items ?? []
@@ -239,10 +240,25 @@ export const ProjectDetails = ({ slug }: { slug: string }) => {
 
   if (loading) {
     return (
-      <div className='fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-[2px]'>
-        <div className='relative w-14 h-14'>
-          <div className='absolute inset-0 rounded-full border-2 border-white/20' />
-          <div className='absolute inset-0 rounded-full border-2 border-white border-t-transparent animate-spin' />
+      <div className='min-h-screen bg-white animate-pulse'>
+        {/* Hero image */}
+        <div className='w-full mt-[76px] aspect-[16/9] bg-gray-200' />
+        <div className='max-w-5xl mx-auto px-4 md:px-8 py-12'>
+          {/* Title */}
+          <div className='h-10 bg-gray-200 rounded w-2/3 mb-8' />
+          {/* Description */}
+          <div className='space-y-3 mb-10'>
+            <div className='h-5 bg-gray-200 rounded w-full' />
+            <div className='h-5 bg-gray-200 rounded w-5/6' />
+            <div className='h-5 bg-gray-200 rounded w-4/6' />
+          </div>
+          {/* Content blocks */}
+          <div className='aspect-video bg-gray-200 rounded-lg mb-8' />
+          <div className='space-y-3'>
+            <div className='h-4 bg-gray-200 rounded w-full' />
+            <div className='h-4 bg-gray-200 rounded w-full' />
+            <div className='h-4 bg-gray-200 rounded w-3/4' />
+          </div>
         </div>
       </div>
     )
@@ -255,11 +271,14 @@ export const ProjectDetails = ({ slug }: { slug: string }) => {
   return (
     <div className='min-h-screen bg-white'>
       {mainImageUrl && (
-        <div className='w-full mt-[76px]'>
-          <img
+        <div className='w-full mt-[76px] aspect-[16/9] relative'>
+          <Image
             src={mainImageUrl}
             alt={project.title}
-            className='w-full h-auto object-cover aspect-[16/9]'
+            fill
+            priority
+            sizes='100vw'
+            className='object-cover'
           />
         </div>
       )}
