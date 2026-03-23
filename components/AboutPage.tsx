@@ -66,7 +66,7 @@ export const AboutPage = () => {
       <main className='max-w-6xl mx-auto px-4 md:px-8 py-16 pb-0'>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-12 items-start'>
           <div className='about-left md:pr-20'>
-            <h1 className='text-4xl md:text-5xl font-bold text-white mb-8'>{about.title}</h1>
+            <h1 className='text-4xl md:text-5xl font-bold text-white mb-8' style={{ fontFamily: 'var(--font-syne)' }}>{about.title}</h1>
             <div className='text-white/90'>
               <PortableText value={about.content} components={portableTextComponents} />
             </div>

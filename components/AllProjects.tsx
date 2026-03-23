@@ -75,7 +75,7 @@ export const AllProjects = () => {
   return (
     <section className='relative w-full bg-black pt-[calc(72px+5rem)] pb-20'>
       <div className='max-w-7xl mx-auto px-4 md:px-8'>
-        <h2 className='text-white text-3xl font-bold mb-8 tracking-tight'>Trabajos</h2>
+        <h2 className='text-white text-3xl font-bold mb-8 tracking-tight' style={{ fontFamily: 'var(--font-syne)' }}>Trabajos</h2>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10'>
           {items.map((p) => {
             const imageUrl = p.image?.asset?.url
@@ -97,7 +97,7 @@ export const AllProjects = () => {
                     )}
                     <div className='absolute inset-0 bg-black/0 group-hover:bg-black/70 transition-all duration-300 flex items-center justify-center'>
                       <div className='opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 px-4 text-center'>
-                        <h3 className='font-bold text-white text-xl mb-2'>{p.title}</h3>
+                        <h3 className='font-bold text-white text-xl mb-2' style={{ fontFamily: 'var(--font-syne)' }}>{p.title}</h3>
                       </div>
                     </div>
                   </div>
