@@ -74,7 +74,7 @@ export const ContactForm = () => {
   return (
     <section className='w-full bg-black pt-[calc(72px+5rem)] pb-20'>
       <div className='max-w-2xl mx-auto px-4 md:px-8'>
-        <h2 className='text-white text-3xl font-bold mb-2 tracking-tight'>Contacto</h2>
+        <h2 className='text-white text-4xl font-bold mb-[15px]' style={{ fontFamily: 'var(--font-syne)' }}>Contacto</h2>
         <p className='text-white/60 text-sm mb-10 font-light'>
           Enviame un mensaje y te respondo a la brevedad.
         </p>
@@ -140,7 +140,7 @@ export const ContactForm = () => {
                 name='message'
                 value={form.message}
                 onChange={handleChange}
-                placeholder='Contame sobre tu proyecto...'
+                placeholder='Tu mensaje...'
                 rows={5}
                 className={`w-full bg-transparent border-b py-2 text-white placeholder-white/20 text-sm outline-none transition-colors resize-none ${errors.message ? 'border-red-400/70' : 'border-white/20 focus:border-white/60'}`}
               />

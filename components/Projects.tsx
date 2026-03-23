@@ -76,9 +76,9 @@ export const Projects = ({ onReady }: { onReady?: () => void }) => {
   }
 
   return (
-    <section className='relative w-full bg-black py-20 min-h-screen'>
+    <section className='relative w-full bg-black py-20'>
       <div className='max-w-7xl mx-auto px-4 md:px-8'>
-        <h2 className='text-white text-3xl font-bold mb-8 tracking-tight' style={{ fontFamily: 'var(--font-syne)' }}>Trabajos</h2>
+        <h2 className='text-white text-4xl font-bold mb-8' style={{ fontFamily: 'var(--font-syne)' }}>Trabajos</h2>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10'>
           {items.map((p, i) => {
             const imageUrl = p.image?.asset?.url
