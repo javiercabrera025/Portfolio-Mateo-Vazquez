@@ -13,6 +13,8 @@
     "@portabletext/react": "^6.0.2",
     "@sanity/client": "^7.14.0",
     "@tailwindcss/vite": "^4.1.18",
+    "@vercel/node": "^5.6.18",
+    "nodemailer": "^8.0.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.13.0"
@@ -20,6 +22,7 @@
   "devDependencies": {
     "@eslint/js": "^9.39.1",
     "@types/node": "^24.10.1",
+    "@types/nodemailer": "^7.0.11",
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",

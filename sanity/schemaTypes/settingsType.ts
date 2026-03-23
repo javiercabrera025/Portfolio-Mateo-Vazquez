@@ -33,6 +33,17 @@ export const settingsType = defineType({
     }),
 
     defineField({
+      name: 'coverVideo',
+      type: 'file',
+      title: 'Video de portada',
+      description: 'Subí el video del reel de portada (MP4 recomendado)',
+      group: 'general',
+      options: {
+        accept: 'video/*',
+      },
+    }),
+
+    defineField({
       name: 'social',
       title: 'Redes',
       type: 'object',

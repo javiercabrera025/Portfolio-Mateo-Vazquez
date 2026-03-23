@@ -65,7 +65,7 @@ export const AboutPage = () => {
   if (!about) return null;
 
   return (
-    <div className='bg-black mt-[76px]'>
+    <div className='bg-black pt-[calc(72px+5rem)]'>
       <main className='max-w-6xl mx-auto px-4 md:px-8 py-16 pb-0'>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-12 items-start'>
           <div className='about-left md:pr-20'>

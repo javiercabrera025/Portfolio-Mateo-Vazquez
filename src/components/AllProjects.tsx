@@ -27,7 +27,7 @@ const slugFromTitle = (title: string) =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)/g, '');
 
-export const Projects = () => {
+export const AllProjects = () => {
   const [items, setItems] = useState<Proyecto[]>([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -57,7 +57,7 @@ export const Projects = () => {
           return a.title.localeCompare(b.title);
         });
 
-        setItems(sortedData.slice(0, 6));
+        setItems(sortedData);
         setLoading(false);
       })
       .catch((err) => {
@@ -78,7 +78,7 @@ export const Projects = () => {
   }
 
   return (
-    <section className='relative w-full bg-black py-20'>
+    <section className='relative w-full bg-black pt-[calc(72px+5rem)] pb-20'>
       <div className='max-w-7xl mx-auto px-4 md:px-8'>
         <h2 className='text-white text-3xl font-bold mb-8 tracking-tight'>
           Trabajos
@@ -114,26 +114,6 @@ export const Projects = () => {
               </article>
             );
           })}
-        </div>
-
-        <div className='mt-12 flex justify-center'>
-          <a
-            href='/trabajos'
-            className='inline-flex items-center gap-2 text-white/70 hover:text-white text-sm font-light tracking-widest uppercase border border-white/20 hover:border-white/50 px-8 py-3 transition-all duration-300'>
-            Ver todos los trabajos
-            <svg
-              className='w-4 h-4'
-              fill='none'
-              stroke='currentColor'
-              viewBox='0 0 24 24'>
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth={1.5}
-                d='M17 8l4 4m0 0l-4 4m4-4H3'
-              />
-            </svg>
-          </a>
         </div>
       </div>
     </section>

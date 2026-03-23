@@ -52,10 +52,19 @@ export const Header = () => {
           {/* Desktop Menu */}
           <div className='hidden md:flex items-center space-x-4'>
             <a
+              href='/trabajos'
+              className='text-white/90 font-normal text-sm tracking-wide transition-all duration-200 hover:text-white'>
+              Trabajos
+            </a>
+            <a
               href='/sobre-mi'
-              rel='noopener noreferrer'
               className='text-white/90 font-normal text-sm tracking-wide transition-all duration-200 hover:text-white'>
               Sobre mí
+            </a>
+            <a
+              href='/contacto'
+              className='text-white/90 font-normal text-sm tracking-wide transition-all duration-200 hover:text-white'>
+              Contacto
             </a>
 
             <div className='flex items-center space-x-4'>
@@ -145,12 +154,22 @@ export const Header = () => {
           <div className='px-6 py-8 flex flex-col space-y-6 justify-center items-center'>
             {/* Links */}
             <a
+              href='/trabajos'
+              onClick={() => setIsOpen(false)}
+              className='text-white/90 font-light text-lg tracking-wide transition-all duration-200 hover:text-white'>
+              Trabajos
+            </a>
+            <a
               href='/sobre-mi'
-              target='_blank'
-              rel='noopener noreferrer'
               onClick={() => setIsOpen(false)}
               className='text-white/90 font-light text-lg tracking-wide transition-all duration-200 hover:text-white'>
               Sobre mí
+            </a>
+            <a
+              href='/contacto'
+              onClick={() => setIsOpen(false)}
+              className='text-white/90 font-light text-lg tracking-wide transition-all duration-200 hover:text-white'>
+              Contacto
             </a>
 
             {/* Divider */}

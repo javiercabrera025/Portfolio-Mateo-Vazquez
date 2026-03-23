@@ -1,10 +1,12 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { Footer } from './components/Footer';
 import { Projects } from './components/Projects';
+import { AllProjects } from './components/AllProjects';
 import { ProjectDetails } from './components/ProjectDetails';
 import { AboutPage } from './components/AboutPage';
+import { ContactForm } from './components/ContactForm';
 
 function App() {
   return (
@@ -22,9 +24,10 @@ function App() {
                 </>
               }
             />
-            <Route path='/trabajos' element={<Navigate to='/' replace />} />
+            <Route path='/trabajos' element={<AllProjects />} />
             <Route path='/trabajos/:slug' element={<ProjectDetails />} />
             <Route path='/sobre-mi' element={<AboutPage />} />
+            <Route path='/contacto' element={<ContactForm />} />
           </Routes>
         </main>
         <Footer />

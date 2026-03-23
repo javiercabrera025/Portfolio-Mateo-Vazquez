@@ -56,13 +56,9 @@ export const Footer = () => {
                 Sobre mí
               </a>
 
-              {settings?.email && (
-                <a
-                  href={`mailto:${settings.email}`}
-                  className='text-white/90 font-light'>
-                  Contacto
-                </a>
-              )}
+              <a href='/contacto' className='text-white/90 font-light'>
+                Contacto
+              </a>
             </nav>
           </div>
 
