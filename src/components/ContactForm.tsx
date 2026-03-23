@@ -237,7 +237,7 @@ export const ContactForm = () => {
                     Enviando...
                   </>
                 ) : (
-                  Enviar mensaje
+                  'Enviar mensaje'
                 )}
               </button>
             </div>
