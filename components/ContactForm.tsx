@@ -61,7 +61,7 @@ export const ContactForm = () => {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, contactEmail }),
+        body: JSON.stringify({ ...form, to: contactEmail }),
       })
       if (!res.ok) throw new Error()
       setStatus('success')

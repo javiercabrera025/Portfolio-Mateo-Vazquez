@@ -4,6 +4,7 @@ import { Footer } from '@/components/Footer'
 import './globals.css'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://mateovazquez.uy'),
   title: {
     default: 'Mateo Vázquez – Realizador Audiovisual',
     template: '%s – Mateo Vázquez',

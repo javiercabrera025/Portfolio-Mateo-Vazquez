@@ -4,16 +4,19 @@ import { Resend } from 'resend'
 const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function POST(req: NextRequest) {
-  const { name, email, subject, message } = await req.json()
+  const { name, email, subject, message, to } = await req.json()
 
   if (!name || !email || !subject || !message) {
     return NextResponse.json({ error: 'Campos requeridos faltantes' }, { status: 400 })
   }
 
+  const recipients = ['javicam@gmail.com']
+  if (to && to !== 'javicam@gmail.com') recipients.push(to)
+
   try {
     await resend.emails.send({
       from: 'Portfolio Mateo Vázquez <onboarding@resend.dev>',
-      to: ['javicam@gmail.com'],
+      to: recipients,
       replyTo: email,
       subject: `Nuevo contacto: ${subject}`,
       html: `
