@@ -18,7 +18,7 @@ type Settings = {
   }
 }
 
-export const Hero = () => {
+export const Hero = ({ onReady }: { onReady?: () => void }) => {
   const [videoUrl, setVideoUrl] = useState<string | null>(null)
 
   useEffect(() => {
@@ -28,6 +28,7 @@ export const Hero = () => {
         setVideoUrl(data?.coverVideo?.asset?.url ?? null)
       })
       .catch(console.error)
+      .finally(() => onReady?.())
   }, [])
 
   return (

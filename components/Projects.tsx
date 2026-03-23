@@ -30,7 +30,7 @@ const slugFromTitle = (title: string) =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)/g, '')
 
-export const Projects = () => {
+export const Projects = ({ onReady }: { onReady?: () => void }) => {
   const [items, setItems] = useState<Proyecto[]>([])
   const [loading, setLoading] = useState(true)
   const router = useRouter()
@@ -54,15 +54,16 @@ export const Projects = () => {
         console.error(err)
         setLoading(false)
       })
+      .finally(() => onReady?.())
   }, [])
 
   if (loading) {
     return (
-      <section className='relative w-full bg-black py-20'>
+      <section className='relative w-full bg-black py-20 min-h-screen'>
         <div className='max-w-7xl mx-auto px-4 md:px-8'>
           <div className='h-9 w-36 bg-white/10 rounded mb-8 animate-pulse' />
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10'>
-            {Array.from({ length: 6 }).map((_, i) => (
+            {Array.from({ length: 9 }).map((_, i) => (
               <div key={i} className='bg-white/5 p-2 animate-pulse'>
                 <div className='aspect-video bg-white/10' />
               </div>
@@ -74,7 +75,7 @@ export const Projects = () => {
   }
 
   return (
-    <section className='relative w-full bg-black py-20'>
+    <section className='relative w-full bg-black py-20 min-h-screen'>
       <div className='max-w-7xl mx-auto px-4 md:px-8'>
         <h2 className='text-white text-3xl font-bold mb-8 tracking-tight'>Trabajos</h2>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10'>

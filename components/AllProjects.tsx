@@ -61,7 +61,7 @@ export const AllProjects = () => {
         <div className='max-w-7xl mx-auto px-4 md:px-8'>
           <div className='h-9 w-36 bg-white/10 rounded mb-8 animate-pulse' />
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10'>
-            {Array.from({ length: 9 }).map((_, i) => (
+            {Array.from({ length: 16 }).map((_, i) => (
               <div key={i} className='bg-white/5 p-2 animate-pulse'>
                 <div className='aspect-video bg-white/10' />
               </div>
