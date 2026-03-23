@@ -121,18 +121,6 @@ export const Projects = () => {
             href='/trabajos'
             className='inline-flex items-center gap-2 text-white/70 hover:text-white text-sm font-light tracking-widest uppercase border border-white/20 hover:border-white/50 px-8 py-3 transition-all duration-300'>
             Ver todos los trabajos
-            <svg
-              className='w-4 h-4'
-              fill='none'
-              stroke='currentColor'
-              viewBox='0 0 24 24'>
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth={1.5}
-                d='M17 8l4 4m0 0l-4 4m4-4H3'
-              />
-            </svg>
           </a>
         </div>
       </div>
