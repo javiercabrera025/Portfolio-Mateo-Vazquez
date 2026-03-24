@@ -20,6 +20,11 @@ interface ContentBlock {
   [key: string]: any;
 }
 
+interface Tag {
+  _id: string;
+  label: string;
+}
+
 interface Proyecto {
   _id: string;
   title: string;
@@ -27,6 +32,7 @@ interface Proyecto {
   image: SanityImage;
   content: ContentBlock[];
   order?: number;
+  tag?: Tag;
 }
 
 const TikTokEmbed = ({ url }: { url: string }) => {
@@ -58,6 +64,14 @@ const TikTokEmbed = ({ url }: { url: string }) => {
 
 const slugFromTitle = (title: string) =>
   title
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+
+const slugFromLabel = (label: string) =>
+  label
     .toLowerCase()
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
@@ -146,6 +160,7 @@ export const ProjectDetails = ({ slug }: { slug: string }) => {
         const allProjects: Proyecto[] = await client.fetch(`
           *[_type == "proyecto"]{
             _id, title, description, image{ asset-> }, order,
+            tag->{ _id, label },
             content[]{ ..., asset-> }
           }
         `);
@@ -348,6 +363,14 @@ export const ProjectDetails = ({ slug }: { slug: string }) => {
       )}
 
       <main className='max-w-5xl mx-auto px-4 md:px-8 py-12'>
+        {project.tag && (
+          <Link
+            href={`/trabajos?tag=${slugFromLabel(project.tag.label)}`}
+            className='inline-block mb-5 px-4 py-1.5 rounded-full text-xs font-medium uppercase tracking-widest border border-black/60 text-black'
+            style={{ fontFamily: 'var(--font-syne)' }}>
+            {project.tag.label}
+          </Link>
+        )}
         <h1
           className='font-semibold text-black leading-none mb-8'
           style={{

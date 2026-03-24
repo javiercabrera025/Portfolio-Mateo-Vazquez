@@ -42,6 +42,14 @@ export const projectType = defineType({
     }),
 
     defineField({
+      name: 'tag',
+      title: 'Categoría',
+      type: 'reference',
+      to: [{type: 'tag'}],
+      group: 'header',
+    }),
+
+    defineField({
       name: 'image',
       title: 'Imagen principal',
       type: 'image',

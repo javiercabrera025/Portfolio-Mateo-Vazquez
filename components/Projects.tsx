@@ -15,12 +15,18 @@ interface SanityImage {
   asset?: SanityImageAsset
 }
 
+interface Tag {
+  _id: string
+  label: string
+}
+
 interface Proyecto {
   _id: string
   title: string
   description: string
   image: SanityImage
   order?: number
+  tag?: Tag
 }
 
 const slugFromTitle = (title: string) =>
@@ -39,7 +45,7 @@ export const Projects = ({ onReady }: { onReady?: () => void }) => {
   useEffect(() => {
     client
       .fetch<Proyecto[]>(
-        `*[_type == "proyecto"]{ _id, title, description, image{ asset-> }, order }`
+        `*[_type == "proyecto"]{ _id, title, description, image{ asset-> }, order, tag->{ _id, label } }`
       )
       .then((data) => {
         const sorted = [...data].sort((a, b) => {
@@ -88,7 +94,7 @@ export const Projects = ({ onReady }: { onReady?: () => void }) => {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.07, ease: 'easeOut' }}
+                transition={{ duration: 0.4, delay: i * 0.05, ease: 'easeOut' }}
                 onClick={() => router.push(`/trabajos/${slugFromTitle(p.title)}`)}
                 className='relative cursor-pointer transition-transform duration-300 group'>
                 <div className='relative bg-white p-2 shadow-[0_20px_40px_rgba(0,0,0,0.45)]'>
@@ -105,6 +111,11 @@ export const Projects = ({ onReady }: { onReady?: () => void }) => {
                     <div className='absolute inset-0 bg-black/0 group-hover:bg-black/70 transition-all duration-300 flex items-center justify-center'>
                       <div className='opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 px-4 text-center'>
                         <h3 className='font-bold text-white text-xl mb-2' style={{ fontFamily: 'var(--font-syne)' }}>{p.title}</h3>
+                          {p.tag && (
+                            <span className='text-white/60 text-xs uppercase tracking-widest'>
+                              {p.tag.label}
+                            </span>
+                          )}
                       </div>
                     </div>
                   </div>
