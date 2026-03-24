@@ -366,7 +366,7 @@ export const ProjectDetails = ({ slug }: { slug: string }) => {
         {project.tag && (
           <Link
             href={`/trabajos?tag=${slugFromLabel(project.tag.label)}`}
-            className='inline-block mb-5 px-4 py-1.5 rounded-full text-xs font-medium uppercase tracking-widest border border-black/20 text-black/50 hover:border-black/60 hover:text-black transition-colors duration-200'
+            className='inline-block mb-5 px-4 py-1.5 rounded-full text-xs font-medium uppercase tracking-widest border border-black/60 text-black'
             style={{ fontFamily: 'var(--font-syne)' }}>
             {project.tag.label}
           </Link>

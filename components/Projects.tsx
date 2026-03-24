@@ -94,7 +94,7 @@ export const Projects = ({ onReady }: { onReady?: () => void }) => {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.07, ease: 'easeOut' }}
+                transition={{ duration: 0.4, delay: i * 0.05, ease: 'easeOut' }}
                 onClick={() => router.push(`/trabajos/${slugFromTitle(p.title)}`)}
                 className='relative cursor-pointer transition-transform duration-300 group'>
                 <div className='relative bg-white p-2 shadow-[0_20px_40px_rgba(0,0,0,0.45)]'>

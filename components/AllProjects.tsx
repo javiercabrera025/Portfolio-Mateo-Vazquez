@@ -160,7 +160,7 @@ export const AllProjects = () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.35, delay: i * 0.05, ease: 'easeOut' }}
+                  transition={{ duration: 0.25, delay: i * 0.04, ease: 'easeOut' }}
                   onClick={() => router.push(`/trabajos/${slugFromTitle(p.title)}`)}
                   className='relative cursor-pointer transition-transform duration-300 group'>
                   <div className='relative bg-white p-2 shadow-[0_20px_40px_rgba(0,0,0,0.45)]'>
