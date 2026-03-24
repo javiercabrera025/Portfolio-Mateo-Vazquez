@@ -1,21 +1,24 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { Resend } from 'resend'
+import { NextRequest, NextResponse } from 'next/server';
+import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: NextRequest) {
-  const { name, email, subject, message, to } = await req.json()
+  const { name, email, subject, message, to } = await req.json();
 
   if (!name || !email || !subject || !message) {
-    return NextResponse.json({ error: 'Campos requeridos faltantes' }, { status: 400 })
+    return NextResponse.json(
+      { error: 'Campos requeridos faltantes' },
+      { status: 400 }
+    );
   }
 
-  const recipients = ['javicam@gmail.com']
-  if (to && to !== 'javicam@gmail.com') recipients.push(to)
+  const recipients = ['javicam@gmail.com'];
+  if (to && to !== 'javicam@gmail.com') recipients.push(to);
 
   try {
     await resend.emails.send({
-      from: 'Portfolio Mateo Vázquez <onboarding@resend.dev>',
+      from: 'Portfolio Mateo Vázquez <no-reply@mateovazquez.uy>',
       to: recipients,
       replyTo: email,
       subject: `Nuevo contacto: ${subject}`,
@@ -42,11 +45,14 @@ export async function POST(req: NextRequest) {
           <p style="color: #666; margin-bottom: 8px;">Mensaje:</p>
           <p style="line-height: 1.6; white-space: pre-wrap;">${message}</p>
         </div>
-      `,
-    })
-    return NextResponse.json({ ok: true })
+      `
+    });
+    return NextResponse.json({ ok: true });
   } catch (error) {
-    console.error('Error sending email:', error)
-    return NextResponse.json({ error: 'Error al enviar el email' }, { status: 500 })
+    console.error('Error sending email:', error);
+    return NextResponse.json(
+      { error: 'Error al enviar el email' },
+      { status: 500 }
+    );
   }
 }
