@@ -13,8 +13,7 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const recipients = ['javicam@gmail.com'];
-  if (to && to !== 'javicam@gmail.com') recipients.push(to);
+  const recipients = to ? [to] : [];
 
   try {
     await resend.emails.send({
